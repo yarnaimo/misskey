@@ -8,7 +8,7 @@ export default Game;
 
 export interface IGame {
 	_id: mongo.ObjectID;
-	created_at: Date;
+	createdAt: Date;
 	started_at: Date;
 	user1_id: mongo.ObjectID;
 	user2_id: mongo.ObjectID;
@@ -36,6 +36,7 @@ export interface IGame {
 		is_llotheo: boolean;
 		can_put_everywhere: boolean;
 		looped_board: boolean;
+		can_undo: boolean;
 	};
 	form1: any;
 	form2: any;

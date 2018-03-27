@@ -41,6 +41,7 @@
 			<div slot="header">
 				<span>ルール</span>
 			</div>
+			<mk-switch v-model="game.settings.can_undo" @change="updateSettings" text="待ったあり"/>
 			<mk-switch v-model="game.settings.is_llotheo" @change="updateSettings" text="石の少ない方が勝ち(ロセオ)"/>
 			<mk-switch v-model="game.settings.looped_board" @change="updateSettings" text="ループマップ"/>
 			<mk-switch v-model="game.settings.can_put_everywhere" @change="updateSettings" text="どこでも置けるモード"/>
