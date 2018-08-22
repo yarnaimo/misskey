@@ -10,7 +10,7 @@ const uri = `mongodb://${u && p ? `${u}:${p}@` : ''}${config.mongodb.host}:${con
  */
 import mongo from 'monk';
 
-const db = mongo(uri);
+const db = mongo(uri, { ssl: config.mongodb.ssl });
 
 export default db;
 
@@ -25,7 +25,7 @@ const nativeDbConn = async (): Promise<mongodb.Db> => {
 	if (mdb) return mdb;
 
 	const db = await ((): Promise<mongodb.Db> => new Promise((resolve, reject) => {
-		mongodb.MongoClient.connect(uri, { useNewUrlParser: true }, (e: Error, client: any) => {
+		mongodb.MongoClient.connect(uri, { useNewUrlParser: true, ssl: config.mongodb.ssl }, (e: Error, client: any) => {
 			if (e) return reject(e);
 			resolve(client.db(config.mongodb.db));
 		});
